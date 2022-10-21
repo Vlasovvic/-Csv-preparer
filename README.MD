@@ -1,9 +1,9 @@
 # Csv preparer to uploader to PG
 
-##Check list
+## Check list
 
- - [x] Dict with info from csv(values, headers, metainformation)
- - [x] PyTest's test
+- [x] Dict with info from csv(values, headers, metainformation)
+- [x] PyTest's test
 
 ## How to run
 
