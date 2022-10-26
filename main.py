@@ -50,12 +50,11 @@ def job(config):
     result = {
         "csv_file": None,
         "headers": None,
-        "metainformation": None
     }
     actual_headers = []
     path_to_csv = config['path_to_csv']
     headers = config['headers']
-    metainformation = config['metainformation']
+    metainformation = {"metainformation": config['metainformation']}
     with open(path_to_csv, newline='', encoding='UTF-8') as file:
         csv_file = csv.reader(file, quotechar='|')
         for index, row in enumerate(csv_file.__iter__()):
@@ -66,10 +65,11 @@ def job(config):
                     check_exceptions(headers, row)
             else:
                 row_buffer = dict_Gen(headers, row)
+                csv_dict.append(metainformation)
                 csv_dict.append(next(row_buffer))
-    result['csv_file'] = csv_dict
+
     result['headers'] = actual_headers
-    result['metainformation'] = metainformation
+    result['csv_file'] = csv_dict
     print(result)
     return result
 
